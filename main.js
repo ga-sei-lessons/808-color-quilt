@@ -57,8 +57,42 @@ const makeQuilt = numberOfSquares => {
     // }
 }
 
+const makePalette = () => {
+    const colorPalette = document.querySelector('#color-palette')
+
+    // while something is in the element, remove it
+    while (colorPalette.firstChild) {
+        // console.log('colorPalette.firstChild:', colorPalette.firstChild)
+        colorPalette.removeChild(colorPalette.firstChild)
+    }
+
+    for (let i = 0; i < 150; i++) {
+        // create the element
+        const square = document.createElement('div')
+        // set the properties
+        square.classList.add('square')
+        square.style.backgroundColor = randomRGB()
+        square.addEventListener('click', event => {
+            console.log(event.target.style.backgroundColor)
+            const color = event.target.style.backgroundColor
+            // make a new sqaure
+            const newSquare = document.createElement('div')
+            // set the props of the square
+            newSquare.classList.add('square')
+            newSquare.style.backgroundColor = color
+            // append sqaure to the dom treem
+            document.querySelector('#my-palette').appendChild(newSquare)
+        })
+        // append the element to the DOM tree
+        colorPalette.appendChild(square)
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    addH2()
-    changeH2()
-    makeQuilt(500)
+    // addH2()
+    // changeH2()
+    // makeQuilt(500)
+    const generate = document.querySelector('#generate')
+    generate.addEventListener('click', makePalette)
 })
+
