@@ -88,11 +88,32 @@ const makePalette = () => {
     }
 }
 
+const alternate = () => {
+    const board = document.querySelector('#board')
+    // iterate 64 times to create 64 squares
+    for (let i = 0; i < 64; i++) {
+        // create a new sqaure
+        const square = document.createElement('div')
+        // add the class of .square
+        square.classList.add('square')
+        // check if i is odd or even and assign the square's color that way
+        if (i % 2 === 0) {
+            square.style.backgroundColor = 'red'
+        } else {
+            square.style.backgroundColor = 'black'
+        }
+        // mount on dom tree
+        board.appendChild(square)
+
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // addH2()
     // changeH2()
     // makeQuilt(500)
-    const generate = document.querySelector('#generate')
-    generate.addEventListener('click', makePalette)
+    // const generate = document.querySelector('#generate')
+    // generate.addEventListener('click', makePalette)
+    alternate()
 })
 
