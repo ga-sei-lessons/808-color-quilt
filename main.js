@@ -28,7 +28,9 @@ const randomRGB = () => {
 // console.log(randomRGB())
 
 const makeQuilt = numberOfSquares => {
-    for (let i = 0; i <= numberOfSquares; i++) {
+
+    let i = 0
+    const squareInterval = setInterval(() => {
         // create the new DOM element
         const div = document.createElement('div')
         // set the properties of the new El
@@ -37,7 +39,22 @@ const makeQuilt = numberOfSquares => {
         div.style.backgroundColor = randomRGB()
         // append the new El to a node in the DOM Tree
         document.querySelector('body').appendChild(div)
-    }
+        // increment i and check to make sure we haven't exceed the number of square to make
+        i++
+        if (i >= numberOfSquares) {
+            clearInterval(squareInterval)
+        }
+    }, 25)
+    // for (let i = 0; i <= numberOfSquares; i++) {
+    //     // create the new DOM element
+    //     const div = document.createElement('div')
+    //     // set the properties of the new El
+    //     div.innerText = i
+    //     div.classList.add('square')
+    //     div.style.backgroundColor = randomRGB()
+    //     // append the new El to a node in the DOM Tree
+    //     document.querySelector('body').appendChild(div)
+    // }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
